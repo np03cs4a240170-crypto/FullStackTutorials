@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Website</title>
+
+    <!-- Internal CSS -->
+    <style>
+        /* Universal Selector */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Element Selector */
+        h1 {
+            color: darkgreen;
+        }
+
+        /* Class Selector */
+        .section-box {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 15px 0;
+        }
+
+        /* ID Selector */
+        #main-content {
+            background-color: #f0f0f0;
+            padding: 15px;
+        }
+
+        /* Attribute Selector */
+        input[type="text"] {
+            padding: 5px;
+            border: 1px solid gray;
+        }
+    </style>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Inline CSS example -->
+    <header style="background-color: lightblue; padding: 20px;">
+        <h1>My Pancake Recipe</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#ingredients">Ingredients</a></li>
+            <li><a href="#steps">Steps</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section id="ingredients" class="section-box">
+            <h2>Ingredients</h2>
+            <ul>
+                <li>1 cup flour</li>
+                <li>2 eggs</li>
+                <li>1 cup milk</li>
+                <li>2 tbsp sugar</li>
+            </ul>
+        </section>
+
+        <section id="steps" class="section-box">
+            <h2>Steps</h2>
+            <ol>
+                <li>Mix all ingredients together.</li>
+                <li>Heat the pan.</li>
+                <li>Pour the batter.</li>
+                <li>Cook until golden brown.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Recipe Website</p>
+    </footer>
+
+</body>
+</html>

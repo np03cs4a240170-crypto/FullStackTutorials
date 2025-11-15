@@ -1,0 +1,28 @@
+<h1 style="color: green; text-align:center;">Delicious Recipe</h1>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+}
+
+/* Navigation Styling */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    background-color: #ddd;
+}
+
+nav a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
