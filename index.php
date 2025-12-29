@@ -1,15 +1,42 @@
 <?php
-include 'includes/header.php';
+include "db.php";
+
+$sql = "SELECT * FROM students";
+$stmt = $conn->query($sql);
 ?>
 
-<p>Welcome to the Student Portfolio Manager.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
 
-<ul>
-    <li><a href="add_student.php">Add Student Info</a></li>
-    <li><a href="upload.php">Upload Portfolio File</a></li>
-    <li><a href="students.php">View Students</a></li>
-</ul>
+<h2>Student List</h2>
+<a href="create.php">Add New Student</a>
 
-<?php
-include 'includes/footer.php';
-?>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+
+    <?php while ($row = $stmt->fetch()) { ?>
+        <tr>
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['course']; ?></td>
+            <td>
+                <a href="edit.php?id=<?php echo $row['id']; ?>">Edit / Delete</a>
+            </td>
+        </tr>
+    <?php } ?>
+
+</table>
+
+</body>
+</html>
