@@ -1,14 +1,7 @@
 <?php
-$host = "localhost";
-$dbname = "school_db";
-$username = "root";
-$password = "";
+$conn = new mysqli("localhost", "root", "", "student_portal");
 
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Database connected successfully";
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+if ($conn->connect_error) {
+    die("Connection failed");
 }
 ?>
