@@ -1,42 +1,40 @@
 <?php
-include "db.php";
+require __DIR__ . '/../vendor/autoload.php';
 
-$sql = "SELECT * FROM students";
-$stmt = $conn->query($sql);
-?>
+use Jenssegers\Blade\Blade;
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student List</title>
-</head>
-<body>
+$views = __DIR__ . '/../app/views';
+$cache = __DIR__ . '/../cache/views';
 
-<h2>Student List</h2>
-<a href="create.php">Add New Student</a>
+$blade = new Blade($views, $cache);
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Course</th>
-        <th>Action</th>
-    </tr>
+require_once __DIR__ . '/../app/controllers/StudentController.php';
 
-    <?php while ($row = $stmt->fetch()) { ?>
-        <tr>
-            <td><?php echo $row['id']; ?></td>
-            <td><?php echo $row['name']; ?></td>
-            <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['course']; ?></td>
-            <td>
-                <a href="edit.php?id=<?php echo $row['id']; ?>">Edit / Delete</a>
-            </td>
-        </tr>
-    <?php } ?>
+$controller = new StudentController($blade);
 
-</table>
+$page = $_GET['page'] ?? 'index';
 
-</body>
-</html>
+switch ($page) {
+    case 'create':
+        $controller->create();
+        break;
+
+    case 'store':
+        $controller->store();
+        break;
+
+    case 'edit':
+        $controller->edit($_GET['id']);
+        break;
+
+    case 'update':
+        $controller->update($_GET['id']);
+        break;
+
+    case 'delete':
+        $controller->delete($_GET['id']);
+        break;
+
+    default:
+        $controller->index();
+}
